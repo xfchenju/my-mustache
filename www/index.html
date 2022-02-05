@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"></div>
+  <script src="/xuni/bundle.js"></script>
+  <script>
+    const templateStr = `
+      <div>
+        <ol>
+          {{ #students }}
+            <li>{{ name }}的爱好是  
+              {{ #hobbies }}
+                <p>{{.}}</p>
+              {{ /hobbies }}
+            </li>
+          {{ /students }}
+        </ol>
+      </div>
+    `
+    const data = {
+      students: [
+        { name: '小明', hobbies: ['游泳', '健身'] },
+        { name: '小红', hobbies: ['游泳', '健身'] },
+        { name: '小强', hobbies: ['游泳', '健身'] },
+      ]
+    }
+    const domStr = MY_TemplateEngine.render(templateStr, data)
+    
+    const container = document.getElementById('container');
+
+    container.innerHTML = domStr;
+
+  </script>
+</body>
+</html>
